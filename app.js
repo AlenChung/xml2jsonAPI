@@ -5,7 +5,7 @@ var http = require('http');
 //var router = express.Router();
 
 var xml2js=require('xml2js');//xml2js Mode
-var parser= new xml2js.Parser;//create xml to json parser object
+var parser= new xml2js.Parser();//create xml to json parser object
 
 var bodyParser = require('body-parser');
 
@@ -17,9 +17,9 @@ app.use(bodyParser.json());
 
 app.post('/api', function (req, res) {
    //console.log(util.inspect(req));
-      parser.parseString(req.body, function (err, result) {
-            res.send(result);//need Json
-                console.log('test post');
+        parser.parseString(req.body, function (err, result) {
+              res.send(result);//need Json
+                  console.log('test post');
     
    });
 });
