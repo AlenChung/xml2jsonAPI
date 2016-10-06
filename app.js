@@ -3,10 +3,9 @@ var app = express();   //expressjs.4.X have three way to req.params/body/query
 var util = require('util');
 var http = require('http');
 //var router = express.Router();
-var xml2js=require('xml2js');
-var parser= new xml2js.Parser;
 
-
+var xml2js=require('xml2js');//xml2js Mode
+var parser= new xml2js.Parser;//create xml to json parser object
 
 var bodyParser = require('body-parser');
 
@@ -19,9 +18,9 @@ app.use(bodyParser.json());
 app.post('/api', function (req, res) {
    //console.log(util.inspect(req));
       parser.parseString(req.body, function (err, result) {
-           res.json(req.body.result);//need Json
-               console.log('test post');
-   
+            res.send(result);//need Json
+                console.log('test post');
+    
    });
 });
 
