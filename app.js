@@ -13,25 +13,20 @@ app.use(bodyParser.urlencoded({ extended: false }));//what is true and false
 app.use(bodyParser.json());
 //var jsonParser = bodyParser.json();
 //app.use(express.bodyParser());
-
-
-
-
-
-
+//app.use(express-xml-bodyparser())
 
 
 app.post('/api', function (req,res,next) {
    //console.log(util.inspect(req));
    //var xml = "<note><to>Tove</to><from>Jani</from><heading>Reminder</heading><body>Don't forget me this weekend!</body></note>"
-        parser.parseString(req.body, function (err, result) {//解析FTP丟入的XML檔案
-              res.send(result);//need Json
-                 console.log(res.body);
+        parser.parseString(req.query, function (err, json) {//解析FTP丟入的XML檔案
+              res.send(json);//need Json
+                  console.log(req.query);
                       console.log('!!!!!!!!!!!!!')
 
-                         console.log(result);
+                         console.log(json);
                
-                 console.log('test post');
+                            console.log('test post');
     
    });
 });
@@ -39,14 +34,14 @@ app.post('/api', function (req,res,next) {
 
 app.get('/user/:id', function (req, res) {
 	
-    res.send('user:' + req.params.id);//params only 
+         res.send('user:' + req.params.id);//params only 
 
 });
 
 
 app.get('/', function (req, res) {
 	
-    res.send('name:' + req.query.name);//query only 
+         res.send('name:' + req.query.name);//query only 
 
    
 });
