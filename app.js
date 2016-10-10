@@ -11,22 +11,48 @@ var bodyParser = require('body-parser');
 
 app.use(bodyParser.urlencoded({ extended: false }));//what is true and false
 app.use(bodyParser.json());
-//var jsonParser = bodyParser.json();
+
+    var jsonParser = bodyParser.json();
 //app.use(express.bodyParser());
 //app.use(express-xml-bodyparser())
+/*
+app.post("/app", function (req, res) {
+	
+     console.log(req.body); // populated!
+           res.send(req.body.id);
+});
+*/
+
+//push azure allen master !!!
 
 
-app.post('/api', function (req,res,next) {
+app.post('/api', jsonParser,function (req,res,next) {
    //console.log(util.inspect(req));
-   //var xml = "<note><to>Tove</to><from>Jani</from><heading>Reminder</heading><body>Don't forget me this weekend!</body></note>"
-        parser.parseString(req.query, function (err, json) {//解析FTP丟入的XML檔案
-              res.send(json);//need Json
-                  console.log(req.query);
-                      console.log('!!!!!!!!!!!!!')
+   var xml = "<note><to>Tove</to><from>Allen</from><heading>Reminder</heading><body>Don't forget me this weekend!</body></note>"
+       var buf='';
+           req.setEncoding('utf8');
+              req.on('data',function(chunk){buf+=chunk});
+                 if (req._body) return next();
+                     req.body = req.body || {};
 
-                         console.log(json);
+       parser.parseString(buf, function (err, json_result) {//解析FTP丟入的XML檔案
+
+if(err){
+
+	err.status=400;
+
+    }
+       else{
+              res.send(json_result);//need Json
+
+                  console.log(req.body);
+
+                      console.log('!!!!!!!!!!!')
+
+                         console.log(json_result);
                
                             console.log('test post');
+        }
     
    });
 });
