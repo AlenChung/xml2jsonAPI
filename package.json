@@ -1,0 +1,23 @@
+{
+  "name": "allen",
+  "version": "1.0.0",
+  "description": "api ",
+  "main": "index.js",
+  "dependencies": {
+    "body-parser": "^1.15.2",
+    "express": "^4.14.0",
+    "http": "^0.0.0",
+    "is-valid": "^1.1.0",
+    "json": "^9.0.4",
+    "jsonpath": "^0.2.7",
+    "python": "^0.0.4",
+    "xml": "^1.0.1",
+    "xml2js": "^0.4.17"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}
